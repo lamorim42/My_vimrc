@@ -1,5 +1,8 @@
+set nocompatible
+filetype plugin on
 syntax on
 set wildmenu
+set foldmethod=indent
 color gruvbox
 set background=dark
 
@@ -18,14 +21,6 @@ set statusline=%F\ \ \ \
 set statusline+=%l/%L\|%c
 set showcmd
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>0
-inoremap {;<CR> {<CR>};<ESC>0
-
 set colorcolumn=80
 set signcolumn=yes
 
@@ -41,3 +36,14 @@ set t_Co=256
 
 set confirm
 set title
+
+" remap comands
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>0
+inoremap {;<CR> {<CR>};<ESC>0
+
+" autocmd FileType c inoremap ;b int<TAB>main(void)<ESC>o
