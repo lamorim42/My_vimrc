@@ -3,7 +3,7 @@ filetype plugin on
 syntax on
 set wildmenu
 set foldmethod=indent
-color gruvbox
+colorscheme gruvbox
 set background=dark
 
 set nu relativenumber
@@ -18,7 +18,7 @@ set smartindent
 
 set laststatus=2
 set statusline=%F\ \ \ \ 
-set statusline+=%l/%L\|%c
+set statusline+=%l/%L%c
 set showcmd
 
 set colorcolumn=80
@@ -38,12 +38,25 @@ set confirm
 set title
 
 " remap comands
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>0
-inoremap {;<CR> {<CR>};<ESC>0
 
-" autocmd FileType c inoremap ;b int<TAB>main(void)<ESC>o
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+let mapleader = " "
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'gruvbox-community/gruvbox'
+Plug '42Paris/42header'
+Plug 'valloric/youcompleteme'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
