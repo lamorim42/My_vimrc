@@ -2,7 +2,6 @@ set nocompatible
 filetype plugin on
 syntax on
 set wildmenu
-set foldmethod=indent
 colorscheme gruvbox
 set background=dark
 
@@ -21,6 +20,17 @@ set statusline=%F\ \ \ \
 set statusline+=%l/%L%c
 set showcmd
 
+" plugin syntastic options
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 set colorcolumn=80
 set signcolumn=yes
 
@@ -37,13 +47,6 @@ set t_Co=256
 set confirm
 set title
 
-" remap comands
-
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
 let mapleader = " "
 
 " Plugins
@@ -57,6 +60,14 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+Plug 'scrooloose/syntastic'
 call plug#end()
 
+" remap comands
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
